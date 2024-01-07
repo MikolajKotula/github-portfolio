@@ -63,7 +63,7 @@ SELECT CASE
 			PATINDEX('%[0-9]%', ABV),
 			LEN(ABV)-5)
 	AS DECIMAL(4,2))
-  ELSE NULL
+  ELSE ABV
  END AS ABV2, ABV
 FROM[Projects].[dbo].[WineData];
 
