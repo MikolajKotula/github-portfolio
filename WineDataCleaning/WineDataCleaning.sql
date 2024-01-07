@@ -174,7 +174,7 @@ SET Type='Unknown'
 WHERE Type='';
 
 -- ABV --
--- There are some wines with 0 ABV, so NULL values are replaced with '-1'
+-- There are some wines with 0 ABV, so NULL and empty values are replaced with '-1'
 UPDATE [Projects].[dbo].[WineData]
 SET ABV='-1'
 WHERE ABV IS NULL OR ABV='';
