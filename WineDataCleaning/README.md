@@ -5,21 +5,37 @@
 The Wine Data Cleaning Project is a meticulous exploration and refinement of a dataset centered around the world of wines. This project endeavors to elevate the dataset's quality, addressing inconsistencies, inaccuracies, and missing information. By employing advanced SQL queries, the objective is to create a standardized and reliable dataset, setting the stage for insightful analysis and exploration of the diverse world of wines.
 ### Features:
 Title: The name or title of the wine.
+
 Description: A brief textual description providing additional details about the wine.
+
 Price: The cost of the wine.
+
 Capacity: The volume or size of the wine bottle.
+
 Grape: The primary grape variety used in making the wine.
+
 Secondary Grape Varieties: Additional grape varieties used in the wine blend.
+
 Closure: The type of closure used for the bottle.
+
 Country: The country where the wine is produced.
+
 Unit: units of alcohol in wine
+
 Characteristics: The "Characteristics" feature encapsulates the unique and discernible flavors and aromas present in a particular wine.
+
 Per bottle / case / each: The quantity of wine included per unit (bottle, case, or each) sold.
+
 Type: The general category of the wine.
+
 ABV: The percentage of alcohol content in the wine.
+
 Region: The geographic region where the grapes used to make the wine are grown.
+
 Style: This feature describes the overall sensory experience and characteristics of the wine.
+
 Vintage: The year the grapes used to make the wine were harvested.
+
 Appellation: A legally defined and protected geographical indication used to identify where the grapes for a wine were grown.
 
 ## Abstract
