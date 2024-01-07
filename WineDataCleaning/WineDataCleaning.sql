@@ -1,6 +1,10 @@
 ﻿-- DATA CLEANING --
 
 -- Price --
+/*
+Removal of the currency symbol as each price has the same one, 
+and removal of information about whether the price is per bottle, as this information is already included in a separate column.
+*/
 SELECT CAST( 
 	SUBSTRING(
 		Price, 
@@ -21,6 +25,9 @@ ALTER TABLE [Projects].[dbo].[WineData]
 ALTER COLUMN Price DECIMAL (5,2);
 
 -- Capacity --
+/*
+Conversion of capacity to liters and removal of capacity units
+*/
 SELECT DISTINCT
 	SUBSTRING(
 		Capacity,
@@ -53,6 +60,7 @@ FROM (
 WHERE [Projects].[dbo].[WineData].Capacity = t.Capacity;
 
 -- ABV --
+/* Removal of additional text */
 SELECT CASE
  WHEN ABV <> '' THEN
 	CAST( SUBSTRING(
@@ -76,6 +84,7 @@ SET ABV= CASE
 	END;
 
 -- Vintage --
+/* Correction of wine vintages. */
 SELECT DISTINCT Vintage
 from [Projects].[dbo].[WineData]
 
@@ -93,7 +102,7 @@ SET Vintage = CASE
 	END;
 
 -- Appelation
--- We can replace some empty values in 'Appelation' from information in 'Title', but 
+/* We can replace some empty values in 'Appelation' from information in 'Title' */
 
 select * from (
 SELECT Title, SUBSTRING(Title, CHARINDEX(',', Title) + 2, LEN(Title)) AS Appellation2, Country, Region, Appellation
@@ -153,7 +162,7 @@ SET Country='Unknown'
 WHERE Country='';
 
 -- Unit --
--- There are some wines with 0 units, so empty values are replaced with '-1'
+/* There are some wines with 0 units, so empty values are replaced with '-1' */
 UPDATE [Projects].[dbo].[WineData]
 SET Unit='-1'
 WHERE Unit='';
@@ -194,7 +203,7 @@ UPDATE [Projects].[dbo].[WineData]
 SET Appellation='Unknown'
 WHERE Appellation=''; 
 
--- Correcting encoding errors
+-- Correcting encoding errors --
 
 -- Title --
 SELECT Title, 
