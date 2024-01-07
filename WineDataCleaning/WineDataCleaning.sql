@@ -2,8 +2,8 @@
 
 -- Price --
 /* 
-Removal of the currency symbol as each price has the same one, 
-and removal of information about whether the price is per bottle, as this information is already included in a separate column. 
+	Removal of the currency symbol as each price has the same one, 
+	and removal of information about whether the price is per bottle, as this information is already included in a separate column. 
 */
 
 SELECT CAST( 
