@@ -1,7 +1,6 @@
-﻿-- DATA CLEANING --
+﻿-- DATA CLEANING
 
--- Price --
-
+-- Price
 /*
 Removal of the currency symbol as each price has the same one, 
 and removal of information about whether the price is per bottle, as this information is already included in a separate column.
@@ -25,7 +24,7 @@ SET Price= CAST(
 ALTER TABLE [Projects].[dbo].[WineData]
 ALTER COLUMN Price DECIMAL (5,2);
 
--- Capacity --
+-- Capacity
 /*
 Conversion of capacity to liters and removal of capacity units
 */
@@ -60,7 +59,7 @@ FROM (
 ) AS t
 WHERE [Projects].[dbo].[WineData].Capacity = t.Capacity;
 
--- ABV --
+-- ABV
 /* 
 Removal of additional text
 */
@@ -86,7 +85,7 @@ SET ABV= CASE
 	 ELSE NULL
 	END;
 
--- Vintage --
+-- Vintage
 /*
 Correction of wine vintages 
 */
@@ -109,7 +108,7 @@ SET Vintage = CASE
 -- Appelation
 /* We can replace some empty values in 'Appelation' from information in 'Title' */
 
-select * from (
+SELECT * FROM (
 SELECT Title, SUBSTRING(Title, CHARINDEX(',', Title) + 2, LEN(Title)) AS Appellation2, Country, Region, Appellation
     FROM [Projects].[dbo].[WineData]
     WHERE  Title LIKE '%,%' 
@@ -132,85 +131,85 @@ WHERE [Projects].[dbo].[WineData].Title = t.Title
   AND t.Appellation2 NOT LIKE '%[0-9]%';
 
 
--- Replacing missing and empty values --
+-- Replacing missing and empty values
 
--- Description --
+-- Description
 UPDATE [Projects].[dbo].[WineData]
 SET Description='None' 
 WHERE Description='' ;
 
--- Capacity --
+-- Capacity
 UPDATE [Projects].[dbo].[WineData]
 SET Capacity=CASE 
 	WHEN Capacity IS NULL THEN 0
 	ELSE CAST(Capacity AS DECIMAL(5,2))
  END;
 
--- Grape --
+-- Grape
 UPDATE [Projects].[dbo].[WineData]
 SET Grape='Unknown' 
 WHERE Grape='' ;
 
--- Secondary Grape --
+-- Secondary Grape
 UPDATE [Projects].[dbo].[WineData]
 SET [Secondary Grape Varieties]='Unknown' 
 WHERE [Secondary Grape Varieties]='' ;
 
--- Closure --
+-- Closure
 UPDATE [Projects].[dbo].[WineData]
 SET Closure='Unknown' 
 WHERE Closure='';
 
--- Country --
+-- Country
 UPDATE [Projects].[dbo].[WineData]
 SET Country='Unknown' 
 WHERE Country='';
 
--- Unit --
+-- Unit
 /* There are some wines with 0 units, so empty values are replaced with '-1' */
 UPDATE [Projects].[dbo].[WineData]
 SET Unit='-1'
 WHERE Unit='';
 
--- Characteristics --
+-- Characteristics
 UPDATE [Projects].[dbo].[WineData]
 SET Characteristics='Unknown'
 WHERE Characteristics='';
 
--- Type --
+-- Type
 UPDATE [Projects].[dbo].[WineData]
 SET Type='Unknown'
 WHERE Type='';
 
--- ABV --
+-- ABV
 -- There are some wines with 0 ABV, so NULL values are replaced with '-1'
 UPDATE [Projects].[dbo].[WineData]
 SET ABV='-1'
 WHERE ABV IS NULL;
 
--- Region --
+-- Region
 UPDATE [Projects].[dbo].[WineData]
 SET Region='Unknown'
 WHERE Region='';
 
--- Style --
+-- Style
 UPDATE [Projects].[dbo].[WineData]
 SET Style='Unknown'
 WHERE Style='';
 
--- Vintage --
+-- Vintage
 UPDATE [Projects].[dbo].[WineData]
 SET Vintage=0
 WHERE Vintage='' or Vintage='NV';
 
--- Appellation --
+-- Appellation
 UPDATE [Projects].[dbo].[WineData]
 SET Appellation='Unknown'
 WHERE Appellation=''; 
 
--- Correcting encoding errors --
+-- Correcting encoding errors
 
--- Title --
+-- Title
 SELECT Title, 
   REPLACE( REPLACE( REPLACE( REPLACE( REPLACE(REPLACE(REPLACE( REPLACE(REPLACE(REPLACE(REPLACE(REPLACE( REPLACE( REPLACE( REPLACE( REPLACE( REPLACE(
   Title, 'Ă©','é'), 'Ă«','ë'), 'Ă˘','â'), 'Ă´','ô'), 'â€',''''), 'â€™',''''), 'Ă¨','è'), 'Ăˇ','á'), 'ĂĽ','ü'), 'Ă¤','ä'), 'Ă®','î'), 'ĂŞ','ê'), 
@@ -254,7 +253,7 @@ SET Title=
   'í‰','É'),
   'Ăł','ó');
 
-  -- Description --
+  -- Description
 select Description,replace(replace(replace( replace( replace( Replace( replace( Replace( Replace( replace( replace( replace( replace( replace( Replace( REPLACE( REPLACE( REPLACE( REPLACE(
 	Description, 'Ă©','é'),'Ă«','ë'),'Ă˘','â'),'Ă´','ô'),'â€',''''),'â€™',''''),'Ă¨','è'),'Ăˇ','á'),'ĂĽ','ü'),'Ă¤','ä'),'Ă®','î'),'ĂŞ','ê'),'Ă±','ñ'),'Ă','í'),'Â°','°'),'í‰','É'),'Ăł','ó'),'â€“','-'),'â€¦','...')
 from [Projects].[dbo].[WineData];
@@ -300,11 +299,11 @@ REPLACE(
   'â€“','-'),
   'â€¦','...');
 
--- Type --
+-- Type
 UPDATE [Projects].[dbo].[WineData]
 SET Type=REPLACE( Type, 'Ă©','é');
 
--- Appellation --
+-- Appellation
 update [Projects].[dbo].[WineData]
 set Appellation=
 REPLACE(
@@ -346,7 +345,7 @@ REPLACE(
   'â€“','-'),
   'â€¦','...');
 
-  -- Grape --
+  -- Grape
 UPDATE [Projects].[dbo].[WineData]
 SET Grape=
 REPLACE(
