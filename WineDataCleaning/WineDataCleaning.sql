@@ -133,7 +133,7 @@ WHERE Description='' ;
 -- Capacity --
 UPDATE [Projects].[dbo].[WineData]
 SET Capacity=CASE 
-	WHEN Capacity IS NULL THEN 0
+	WHEN Capacity IS NULL or Capacity='' THEN NULL
 	ELSE CAST(Capacity AS DECIMAL(5,2))
  END;
 
@@ -160,7 +160,7 @@ WHERE Country='';
 -- Unit --
 -- There are some wines with 0 units, so empty values are replaced with '-1'
 UPDATE [Projects].[dbo].[WineData]
-SET Unit='-1'
+SET Unit=NULL
 WHERE Unit='';
 
 -- Characteristics --
@@ -176,7 +176,7 @@ WHERE Type='';
 -- ABV --
 -- There are some wines with 0 ABV, so NULL and empty values are replaced with '-1'
 UPDATE [Projects].[dbo].[WineData]
-SET ABV='-1'
+SET ABV=NULL
 WHERE ABV IS NULL OR ABV='';
 
 -- Region --
@@ -191,7 +191,7 @@ WHERE Style='';
 
 -- Vintage --
 UPDATE [Projects].[dbo].[WineData]
-SET Vintage=0
+SET Vintage=NULL
 WHERE Vintage='' or Vintage='NV';
 
 -- Appellation --
