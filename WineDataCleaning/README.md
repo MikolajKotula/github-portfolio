@@ -40,5 +40,6 @@ List of finctions used for the project:
 - CHARINDEX
 - REPLACE
 - CAST
+- JOIN
 
 
