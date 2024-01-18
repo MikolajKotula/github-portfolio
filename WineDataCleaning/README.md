@@ -2,7 +2,8 @@
 
 ## Introduction
 The Wine Data Cleaning Project carefully examines and improves a dataset focused on wines. The goal is to enhance the dataset's quality by fixing inconsistencies, inaccuracies, and missing information. Advanced SQL queries are used to create a standardized and dependable dataset, paving the way for insightful analysis and exploration of the diverse world of wines.
-Data soures: https://www.kaggle.com/datasets/elvinrustam/wine-dataset
+Data soures:
+https://www.kaggle.com/datasets/elvinrustam/wine-dataset
 ### Features:
 - Title: The name or title of the wine.
 - Description: A brief textual description providing additional details about the wine.
