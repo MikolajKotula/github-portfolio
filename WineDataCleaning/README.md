@@ -1,8 +1,8 @@
 # Wine Data Cleaning Project
 
 ## Introduction
+The Wine Data Cleaning Project carefully examines and improves a dataset focused on wines. The goal is to enhance the dataset's quality by fixing inconsistencies, inaccuracies, and missing information. Advanced SQL queries are used to create a standardized and dependable dataset, paving the way for insightful analysis and exploration of the diverse world of wines.
 
-The Wine Data Cleaning Project is a meticulous exploration and refinement of a dataset centered around the world of wines. This project endeavors to elevate the dataset's quality, addressing inconsistencies, inaccuracies, and missing information. By employing advanced SQL queries, the objective is to create a standardized and reliable dataset, setting the stage for insightful analysis and exploration of the diverse world of wines.
 ### Features:
 Title: The name or title of the wine.
 
@@ -38,10 +38,23 @@ Vintage: The year the grapes used to make the wine were harvested.
 
 Appellation: A legally defined and protected geographical indication used to identify where the grapes for a wine were grown.
 
-## Abstract
-
-The Wine Data Cleaning Project involves a comprehensive cleaning process to enhance the quality of a wine-related dataset. Beginning with the removal of currency symbols and extraneous information in the price column, the project extends to the conversion of capacity units, correction of vintage representations, and replacement of missing values. The SQL script provided encapsulates a detailed and systematic approach to each cleaning step, showcasing the intricacies of data cleaning in a real-world scenario. This abstract encapsulates the essence of meticulous data cleaning practices and their significance in preparing datasets for accurate analysis and interpretation.
-
 ## Summary
+The Wine Data Cleaning Project includes:
+- Removal of characters from numeric columns.
+- Conversion of values in the "Capacity" column to a standardized unit (liters).
+- Correcting vintage years.
+- Replacement of some missing values in "Appellation" with information from the "Title."
+- Replacement of missing and empty values with NULL.
+- Removal of duplicates.
+- Removal of wines in cases and boxes (There are only 6 wines per case and 5 per each boxed wine; for every case and box, there is a traditional 0.75 bottle).
+- Correcting encoding errors
 
-In summary, the Wine Data Cleaning Project navigates through various intricacies present in a wine dataset. The cleaning process involves handling diverse data types, standardizing units, and rectifying inconsistencies in representations. The provided SQL script meticulously captures each step, from cleansing price information to correcting vintages and replacing missing values. The result is a refined dataset that is not only consistent but also well-prepared for further exploration, analysis, and potential machine learning applications. This project serves as a testament to the importance of data cleaning in ensuring the reliability and accuracy of datasets, particularly in the realm of wine analysis.
+List of finctions used for the project:
+- SUBSTRING
+- PATINDEX
+- CASE, WHEN
+- CHARINDEX
+- REPLACE
+- CAST
+
+
