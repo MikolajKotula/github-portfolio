@@ -35,7 +35,7 @@ The Wine Data Cleaning Project includes:
 - Removal of wines in cases and boxes. There are only 6 wines per case and 5 per each (boxed wine). For every case and box, there is a traditional 0.75 bottle).
 - Correcting encoding errors
 
-List of finctions used for the project:
+List of functions used in the project:
 - SUBSTRING
 - PATINDEX
 - CASE, WHEN
